@@ -1,11 +1,83 @@
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from './Screens/LoginScreen';
+import RegisterScreen from './Screens/Register';
+import SplashScreen from 'react-native-splash-screen'
+import Reset from './Screens/Reset';
+import Appes from './Screens/Home';
+import Foodlist from './Screens/Food';
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+
+  SplashScreen.hide();
+  // const [isload, setisload ] = useState(false);
+
+  // setTimeout(() => {
+  //   setisload(true)
+  // },5000 );
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+       
+        <Stack.Screen name='login' component={Login} options ={ { headerShown : false }} />
+        <Stack.Screen name='signup' component={RegisterScreen} options ={ { headerShown : false }} />
+        <Stack.Screen name='reset' component={Reset} options ={ { headerShown : false }} />
+        <Stack.Screen name='home' component={Appes} options ={ { headerShown : false }} />
+        <Stack.Screen name='list' component={Foodlist} options ={ { headerShown : false }} />
+
+
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+
+}
+
+
+
+export default App
+
+
+
+
+
+
+{/*
+
 import * as React from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './Screens/LoginScreen';
+import RegisterScreen from './Screens/Register';
+import SplashScreen from 'react-native-splash-screen'
 
-//import SplashScreen from './Screens/SplashScreen';
-function HomeScreen({ navigation }) {
+
+
+
+const Stack = createNativeStackNavigator();
+
+const MainStackNavigator = () => {
+  SplashScreen.hide();
+
   return (
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
+    </Stack.Navigator>
+  );
+}
+
+export { MainStackNavigator };
+
+
+function HomeScreen({ navigation }) {
+ 
+  return (
+    
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button
         onPress={() => navigation.navigate('Notifications')}
@@ -27,13 +99,14 @@ function NotificationsScreen({ navigation }) {
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+  
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="SplashScreen">
-        <Drawer.Screen name='splashScreen' component={SplashScreen} options ={ { headerShown : false }}/>
+      <Drawer.Navigator initialRouteName="Home">
+        
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
-}
+*/}
