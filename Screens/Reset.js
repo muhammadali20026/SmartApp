@@ -1,11 +1,14 @@
 
-import { View,StyleSheet,TouchableOpacity,Text,TextInput } from "react-native";
+import { View,StyleSheet,TouchableOpacity,Text,TextInput,StatusBar } from "react-native";
 import React,{useState} from "react";
 
 const Reset = () => {
     const [email, setEmail] = useState('');
     return (
         <View style={styles.container}>
+
+              
+                
           <View style={styles.text}>
             <Text>{'Please enter your email to reset your password:'}</Text>
             <TextInput

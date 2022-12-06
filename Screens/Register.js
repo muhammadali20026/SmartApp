@@ -1,4 +1,4 @@
-import React, {useState, createRef} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   TextInput,
@@ -10,23 +10,19 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import smartdiet from '../Image/smartdiet.png';
+
 const Signup = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userHeight, setUserHeight] = useState('');
   const [userWeight, setUserWeight] = useState('');
   const [userAge, setUserAge] = useState('');
-  const [UserConfirmPssword, setConfirmPassword] = useState('');
+  const [ContactNumber, setContactNumber] = useState('');
+  const [Gender, setGender] = useState('');
+
   const [userPassword, setUserPassword] = useState('');
 
   const [errortext, setErrortext] = useState('');
-  const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
-
-  const emailInputRef = createRef();
-  const ageInputRef = createRef();
-  const addressInputRef = createRef();
-  const passwordInputRef = createRef();
 
   const handleSubmitButton = props => {
     setErrortext('');
@@ -42,17 +38,26 @@ const Signup = ({navigation}) => {
       alert('Please fill Age');
       return;
     }
-    
+
     if (!userPassword) {
       alert('Please fill Password');
       return;
     }
+   
     if (!userHeight) {
       alert('Please fill Height');
       return;
     }
     if (!userWeight) {
       alert('Please fill  Weight');
+      return;
+    }
+    if (!Gender) {
+      alert('Please fill  Gender ');
+      return;
+    }
+    if (!ContactNumber) {
+      alert('Please fill  your phone Number ');
       return;
     }
   };
@@ -73,12 +78,10 @@ const Signup = ({navigation}) => {
             justifyContent: 'center',
             alignContent: 'center',
           }}>
-            
           <View style={{alignItems: 'center'}}></View>
-          
+
           <KeyboardAvoidingView enabled>
             <View style={styles.SectionStyle}>
-          
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={UserName => setUserName(UserName)}
@@ -86,11 +89,70 @@ const Signup = ({navigation}) => {
                 placeholder="Enter Name"
                 placeholderTextColor="#8b9cb5"
                 autoCapitalize="sentences"
-                //returnKeyType="next"
-                //onSubmitEditing={() =>
-                 // emailInputRef.current && emailInputRef.current.focus()
-                //}
+              />
+
+            </View>
+            <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                onChangeText={UserAge => setUserAge(UserAge)}
+                underlineColorAndroid="#f000"
+                placeholder="Enter Age"
+                textContentType='Number'
+                placeholderTextColor="#8b9cb5"
+                keyboardType="numeric"
                 blurOnSubmit={false}
+              />
+            </View>
+            <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                onChangeText={UserHeight => setUserHeight(UserHeight)}
+                underlineColorAndroid="#f000"
+                placeholder="Enter height"
+                textContentType='Number'
+                keyboardType="numeric"
+                placeholderTextColor="#8b9cb5"
+              />
+            </View>
+            <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                onChangeText={userWeight => setUserWeight(userWeight)}
+                underlineColorAndroid="#f000"
+                placeholder="Enter weight"
+                textContentType='Number'
+                keyboardType="numeric"
+                placeholderTextColor="#8b9cb5"
+              />
+            </View>
+            <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                onChangeText={ContactNumber =>
+                  setContactNumber(ContactNumber)
+                }
+                underlineColorAndroid="#f000"
+                placeholder="Enter Phone number"
+                placeholderTextColor="#8b9cb5"
+                autoCapitalize="sentences"
+                textContentType='Number'
+                keyboardType="numeric"
+                returnKeyType="next"
+              />
+            </View>
+            <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                onChangeText={Gender =>
+                  setGender(Gender)
+                }
+                underlineColorAndroid="#f000"
+                placeholder="Gender"
+                
+                placeholderTextColor="#8b9cb5"
+                autoCapitalize="sentences"
+                returnKeyType="next"
               />
             </View>
             <View style={styles.SectionStyle}>
@@ -101,11 +163,6 @@ const Signup = ({navigation}) => {
                 placeholder="Enter Email"
                 placeholderTextColor="#8b9cb5"
                 keyboardType="email-address"
-                //ref={emailInputRef}
-               // returnKeyType="next"
-                //onSubmitEditing={() =>
-                 // passwordInputRef.current && passwordInputRef.current.focus()
-               // }
                 blurOnSubmit={false}
               />
             </View>
@@ -116,67 +173,16 @@ const Signup = ({navigation}) => {
                 underlineColorAndroid="#f000"
                 placeholder="Enter Password"
                 placeholderTextColor="#8b9cb5"
-                ref={passwordInputRef}
                 returnKeyType="next"
                 secureTextEntry={true}
-               // onSubmitEditing={() =>
-                 // ageInputRef.current && ageInputRef.current.focus()
-               // }
-                blurOnSubmit={false}
-              />
-              </View>
-              <View style={styles.SectionStyle}>
-              <TextInput
-                style={styles.inputStyle}
-                onChangeText={UserConfirmPssword => setConfirmPassword(UserConfirmPssword)}
-                underlineColorAndroid="#f000"
-                placeholder="Enter confirm password"
-                placeholderTextColor="#8b9cb5"
-                autoCapitalize="sentences"
-                secureTextEntry={true}
-               // ref={addressInputRef}
-                returnKeyType="next"
-                //onSubmitEditing={Keyboard.dismiss}
-               // blurOnSubmit={false}
-              />
-            </View>
-              <View style={styles.SectionStyle}>
-              <TextInput
-                style={styles.inputStyle}
-                onChangeText={UserHeight => setUserHeight(UserHeight)}
-                underlineColorAndroid="#f000"
-                placeholder="Enter height"
-                placeholderTextColor="#8b9cb5"
-              
-                />
-                </View>
-                <View style={styles.SectionStyle}>
-                <TextInput
-                style={styles.inputStyle}
-                onChangeText={UserEmail => setUserWeight(UserEmail)}
-                underlineColorAndroid="#f000"
-                placeholder="Enter weight"
-                placeholderTextColor="#8b9cb5"
-                
-                />
-            </View>
-            <View style={styles.SectionStyle}>
-              <TextInput
-                style={styles.inputStyle}
-                onChangeText={UserAge => setUserAge(UserAge)}
-                underlineColorAndroid="#f000"
-                placeholder="Enter Age"
-                placeholderTextColor="#8b9cb5"
-                keyboardType="numeric"
-                //ref={ageInputRef}
-               // returnKeyType="next"
-                //onSubmitEditing={() =>
-                 // addressInputRef.current && addressInputRef.current.focus()
-               // }
                 blurOnSubmit={false}
               />
             </View>
             
+           
+            
+            
+
             {errortext != '' ? (
               <Text style={styles.errorTextStyle}>{errortext}</Text>
             ) : null}
@@ -209,9 +215,9 @@ const styles = StyleSheet.create({
     marginLeft: 35,
     marginRight: 35,
     margin: 10,
-    
+    borderRadius: 50,
+
     backgroundColor: 'white',
-    borderRadius: 100,
   },
   buttonStyle: {
     backgroundColor: 'skyblue',

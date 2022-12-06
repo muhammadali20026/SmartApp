@@ -1,116 +1,129 @@
-import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
-class Home extends Component {
-   state = {
-      height: '',
-      weight: '',
-      bmi: '',
-      BmiResult: '',
-   }
-   handleHeight = (text) => {
-      this.setState({ height: text })
-   }
-   handleWeight = (text) => {
-      this.setState({ weight: text })
-   }
-   calculate = (height, weight) => {
-      //calculation
-      var result = (parseFloat(weight)*10000)/(parseFloat(height)*parseFloat(height));
-      result = result.toFixed(2);
-      //display result
-      this.setState({ bmi: result })
-      if(result<18.5){
-         this.setState({BmiResult:'Underweight'})
-      }
-      else if(result>=18.5&&result<25){
-         this.setState({BmiResult:'Normal weight'})
-      }
-      else if(result>=25&&result<30){
-         this.setState({BmiResult:'Overweight'})
-      }
-      else if(result>=30){
-         this.setState({BmiResult:'Obese'})
-      }
-      else{
-         alert('Incorrect Input!');
-         this.setState({BmiResult:''})
-      }
-   }
-   render() {
-      return (
-         <View style = {styles.container}>
-<Text style={styles.title}>BMI Calculator</Text>
-            
-            <Text  style = {styles.label}>Height</Text>
-            <TextInput style = {styles.input}
-               underlineColorAndroid = "transparent"
-               placeholder = "Height (Cm)"
-               autoCapitalize = "none"
-               onChangeText = {this.handleHeight}/>
-<Text  style = {styles.label}>Weight</Text>
-            <TextInput style = {styles.input}
-               underlineColorAndroid = "transparent"
-               placeholder = "Weight (Kg)"
-               autoCapitalize = "none"
-               onChangeText = {this.handleWeight}/>
-            
-            <TouchableOpacity
-               style = {styles.submitButton}
-               onPress = {
-                  () => this.calculate(this.state.height, this.state.weight)
-               }>
-               <Text style = {styles.submitButtonText}> Calculate </Text>
-            </TouchableOpacity>
-<Text style = {styles.output}>{this.state.bmi}</Text>
-            <Text style = {styles.resultText}>{this.state.BmiResult}</Text>
-</View>
-      )
-   }
-}
-export default Home
+import React from "react";
+import  { useState } from "react";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  StyleSheet
+} from "react-native";
+const Home = () => {
+  const [bmi, setBmi] = useState("");
+  const [info, setInfo] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const handleBmi = () => {
+    let val = (
+      [Number(weight) / Number(height) / Number(height)] * 10000
+    ).toFixed(1);
+    console.log(typeof val);
+    setBmi(val.toString());
+    if (val < 18.5) {
+      setInfo("Under Weight");
+    } else if (val > 18.5 && val <= 24.9) {
+      setInfo("Healthy");
+    } else if (val > 24.9 && val < 30) {
+      setInfo("Overweight");
+    } else {
+      setInfo("Obese");
+    }
+  }
+  return (
+    <View style={styles.container}>
+      <View>
+        <Text style={styles.title}>BMI Calculator</Text>
+      </View>
+
+      <View>
+        <Text style={styles.label}>Height</Text>
+      </View>
+      <View>
+        <TextInput
+          style={styles.input}
+          value="text"
+          onChange={(e) => setHeight(value)}
+          placeholder="height in cm"
+        />
+      </View>
+      <View>
+        <Text style={styles.label}>Weight</Text>
+      </View>
+      <View>
+        <TextInput
+          style={styles.input}
+          value="text"
+          onChange={(e) => setWeight(value)}
+          placeholder="Weight in kg"
+        />
+      </View>
+      <TouchableOpacity style={styles.submitButton} onClick={handleBmi}>
+       <Text>Calculate</Text> 
+      </TouchableOpacity>
+      <Text>{bmi}</Text>
+      <Text>{info}</Text>
+          </View>
+  );
+};
+
+export default Home;
+
 const styles = StyleSheet.create({
-   container: {
-      paddingTop: 23,
-      alignContent:"center",
-      
-   },
-   input: {
-      margin: 15,
-      height: 40,
-      borderWidth: 1,
-      padding: 10,
-   },
-   submitButton: {
-      backgroundColor: '#ff6666',
-      padding: 10,
-      margin: 15,
-      height: 40,
-   },
-   submitButtonText:{
-      textAlign: "center",
-      color: 'white',
-     // fontWeight:"bold",
-      fontSize: 18,
-   },
-   output:{
-      textAlign: "center",
-      fontSize: 30,
-   },
-   title:{
-      paddingTop:30,
-      paddingBottom:10,
-      textAlign: "center",
-      fontSize: 30,
-      fontWeight:"bold",
-   },
-   resultText:{
-      paddingTop:20,
-      paddingBottom:10,
-      textAlign: "center",
-      fontSize: 30,
-      color: 'blue'
-   },
-   label:{
-      marginLeft: 15,
-   }
-})
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  input: {
+    // flex: 1,
+    color: "black",
+    paddingLeft: 15,
+    paddingRight: 150,
+    borderWidth: 1,
+    borderRadius: 30,
+    borderColor: "black"
+  },
+  submitButton: {
+    backgroundColor: "skyblue",
+    padding: 10,
+    paddingLeft: 15,
+    paddingRight: 150,
+    margin: 15,
+    borderRadius: 30,
+    height: 40
+  },
+  submitButtonText: {
+    color: "white",
+
+    fontSize: 18
+  },
+  output: {
+    textAlign: "center",
+    fontSize: 30
+  },
+  title: {
+    borderSize: 1,
+    borderRadius: 10,
+    paddingBottom: 10,
+    textAlign: "center",
+    fontSize: 30,
+    fontWeight: "bold",
+
+    backgroundColor: "skyblue"
+  },
+  resultText: {
+    paddingTop: 20,
+    paddingBottom: 10,
+    textAlign: "center",
+    fontSize: 30,
+    color: "blue"
+  },
+  label: {
+    marginLeft: 15,
+    marginTop: 20,
+    fontSize: 20
+  }
+});
+
+
+
