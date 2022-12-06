@@ -9,8 +9,11 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+
  import smartdiet from '../Image/smartdiet.png';
-const Login=(props)=> {
+ 
+
+const Login=({navigation})=> {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
  
@@ -37,16 +40,16 @@ const Login=(props)=> {
         />
       </View>
  
-      <TouchableOpacity  onPress={() => props.navigation.navigate('reset')}>
+      <TouchableOpacity  onPress={() => navigation.navigate('reset')}>
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
  
-      <TouchableOpacity style={styles.loginBtn} onPress={() => props.navigation.navigate('home')}>
+      <TouchableOpacity style={styles.loginBtn} onPress={() =>navigation.navigate('home')}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity
        
-       onPress={() => props.navigation.navigate('signup')}>
+       onPress={() => navigation.navigate('signup')}>
         <Text style={styles.forgot_button}>Create a new account</Text>
       </TouchableOpacity>
     </View>

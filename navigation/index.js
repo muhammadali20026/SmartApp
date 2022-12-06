@@ -1,17 +1,15 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from './Screens/LoginScreen';
-import RegisterScreen from './Screens/Register';
+import Login from '../Screens/LoginScreen';
+import RegisterScreen from '../Screens/Register';
 import SplashScreen from 'react-native-splash-screen'
-import Reset from './Screens/Reset';
-import Appes from './Screens/Home';
-import Foodlist from './Screens/Food';
-import NavigationComponent from './navigation';
-import { Provider } from 'react-redux'
-import { store } from './store/index';
+import Reset from '../Screens/Reset';
+import Home from '../Screens/Home';
+import Foodlist from '../Screens/Food';
+const Stack = createNativeStackNavigator();
 
-const App = () => {
+const NavigationComponent = () => {
 
   SplashScreen.hide();
   // const [isload, setisload ] = useState(false);
@@ -21,16 +19,25 @@ const App = () => {
   // },5000 );
 
   return (
-    <Provider store={store}>
-    <NavigationComponent />
-    </Provider>
+    <NavigationContainer>
+      <Stack.Navigator>
+       
+        <Stack.Screen name='login' component={Login} options ={ { headerShown : false }} />
+        <Stack.Screen name='signup' component={RegisterScreen} options ={ { headerShown : false }} />
+        <Stack.Screen name='reset' component={Reset} options ={ { headerShown : false }} />
+        <Stack.Screen name='home' component={Home} options ={ { headerShown : false }} />
+        <Stack.Screen name='list' component={Foodlist} options ={ { headerShown : false }} />
+
+
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 
 }
 
 
 
-export default App
+export default NavigationComponent
 
 
 

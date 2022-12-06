@@ -11,11 +11,13 @@ import {
   ScrollView,
 } from 'react-native';
 import smartdiet from '../Image/smartdiet.png';
-const Signup = props => {
+const Signup = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const [userHeight, setUserHeight] = useState('');
+  const [userWeight, setUserWeight] = useState('');
   const [userAge, setUserAge] = useState('');
-  const [userAddress, setUserAddress] = useState('');
+  const [UserConfirmPssword, setConfirmPassword] = useState('');
   const [userPassword, setUserPassword] = useState('');
 
   const [errortext, setErrortext] = useState('');
@@ -40,12 +42,17 @@ const Signup = props => {
       alert('Please fill Age');
       return;
     }
-    if (!userAddress) {
-      alert('Please fill Address');
-      return;
-    }
+    
     if (!userPassword) {
       alert('Please fill Password');
+      return;
+    }
+    if (!userHeight) {
+      alert('Please fill Height');
+      return;
+    }
+    if (!userWeight) {
+      alert('Please fill  Weight');
       return;
     }
   };
@@ -71,7 +78,7 @@ const Signup = props => {
           
           <KeyboardAvoidingView enabled>
             <View style={styles.SectionStyle}>
-            <Image style={styles.backendbg} source={smartdiet} />
+          
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={UserName => setUserName(UserName)}
@@ -79,10 +86,10 @@ const Signup = props => {
                 placeholder="Enter Name"
                 placeholderTextColor="#8b9cb5"
                 autoCapitalize="sentences"
-                returnKeyType="next"
-                onSubmitEditing={() =>
-                  emailInputRef.current && emailInputRef.current.focus()
-                }
+                //returnKeyType="next"
+                //onSubmitEditing={() =>
+                 // emailInputRef.current && emailInputRef.current.focus()
+                //}
                 blurOnSubmit={false}
               />
             </View>
@@ -94,11 +101,11 @@ const Signup = props => {
                 placeholder="Enter Email"
                 placeholderTextColor="#8b9cb5"
                 keyboardType="email-address"
-                ref={emailInputRef}
-                returnKeyType="next"
-                onSubmitEditing={() =>
-                  passwordInputRef.current && passwordInputRef.current.focus()
-                }
+                //ref={emailInputRef}
+               // returnKeyType="next"
+                //onSubmitEditing={() =>
+                 // passwordInputRef.current && passwordInputRef.current.focus()
+               // }
                 blurOnSubmit={false}
               />
             </View>
@@ -112,11 +119,46 @@ const Signup = props => {
                 ref={passwordInputRef}
                 returnKeyType="next"
                 secureTextEntry={true}
-                onSubmitEditing={() =>
-                  ageInputRef.current && ageInputRef.current.focus()
-                }
+               // onSubmitEditing={() =>
+                 // ageInputRef.current && ageInputRef.current.focus()
+               // }
                 blurOnSubmit={false}
               />
+              </View>
+              <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                onChangeText={UserConfirmPssword => setConfirmPassword(UserConfirmPssword)}
+                underlineColorAndroid="#f000"
+                placeholder="Enter confirm password"
+                placeholderTextColor="#8b9cb5"
+                autoCapitalize="sentences"
+                secureTextEntry={true}
+               // ref={addressInputRef}
+                returnKeyType="next"
+                //onSubmitEditing={Keyboard.dismiss}
+               // blurOnSubmit={false}
+              />
+            </View>
+              <View style={styles.SectionStyle}>
+              <TextInput
+                style={styles.inputStyle}
+                onChangeText={UserHeight => setUserHeight(UserHeight)}
+                underlineColorAndroid="#f000"
+                placeholder="Enter height"
+                placeholderTextColor="#8b9cb5"
+              
+                />
+                </View>
+                <View style={styles.SectionStyle}>
+                <TextInput
+                style={styles.inputStyle}
+                onChangeText={UserEmail => setUserWeight(UserEmail)}
+                underlineColorAndroid="#f000"
+                placeholder="Enter weight"
+                placeholderTextColor="#8b9cb5"
+                
+                />
             </View>
             <View style={styles.SectionStyle}>
               <TextInput
@@ -126,28 +168,15 @@ const Signup = props => {
                 placeholder="Enter Age"
                 placeholderTextColor="#8b9cb5"
                 keyboardType="numeric"
-                ref={ageInputRef}
-                returnKeyType="next"
-                onSubmitEditing={() =>
-                  addressInputRef.current && addressInputRef.current.focus()
-                }
+                //ref={ageInputRef}
+               // returnKeyType="next"
+                //onSubmitEditing={() =>
+                 // addressInputRef.current && addressInputRef.current.focus()
+               // }
                 blurOnSubmit={false}
               />
             </View>
-            <View style={styles.SectionStyle}>
-              <TextInput
-                style={styles.inputStyle}
-                onChangeText={UserAddress => setUserAddress(UserAddress)}
-                underlineColorAndroid="#f000"
-                placeholder="Enter Address"
-                placeholderTextColor="#8b9cb5"
-                autoCapitalize="sentences"
-                ref={addressInputRef}
-                returnKeyType="next"
-                onSubmitEditing={Keyboard.dismiss}
-                blurOnSubmit={false}
-              />
-            </View>
+            
             {errortext != '' ? (
               <Text style={styles.errorTextStyle}>{errortext}</Text>
             ) : null}
@@ -161,7 +190,7 @@ const Signup = props => {
           <TouchableOpacity
             style={styles.buttonStyle1}
             activeOpacity={0.5}
-            onPress={() => props.navigation.navigate('login')}>
+            onPress={() => navigation.navigate('login')}>
             <Text>Login Now</Text>
           </TouchableOpacity>
         </ScrollView>
@@ -180,6 +209,7 @@ const styles = StyleSheet.create({
     marginLeft: 35,
     marginRight: 35,
     margin: 10,
+    
     backgroundColor: 'white',
     borderRadius: 100,
   },
@@ -214,7 +244,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
-    color: 'white',
+    color: 'black',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,

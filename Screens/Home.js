@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
-class Appes extends Component {
+class Home extends Component {
    state = {
       height: '',
       weight: '',
@@ -67,10 +67,11 @@ class Appes extends Component {
       )
    }
 }
-export default Appes
+export default Home
 const styles = StyleSheet.create({
    container: {
       paddingTop: 23,
+      alignContent:"center",
       
    },
    input: {
