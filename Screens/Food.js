@@ -4,71 +4,37 @@ import {
   FlatList,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native'
 
 //import { actionCreators, initialState, reducer } from './posts'
 
-export default function Foodlist() {
-  const [state, dispatch] = useReducer(reducer, initialState)
+export default function Food({navigation}) {
 
-  useEffect(() => {
-    async function fetchPosts() {
-      dispatch(actionCreators.loading())
 
-      try {
-        const response = await fetch(
-          'https://jsonplaceholder.typicode.com/posts'
-        )
-        const posts = await response.json()
-        dispatch(actionCreators.success(posts))
-      } catch (e) {
-        dispatch(actionCreators.failure())
-      }
-    }
-
-    fetchPosts()
-  }, [])
-
-  const { posts, loading, error } = state
-
-  if (loading) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator animating={true} />
-      </View>
-    )
-  }
-
-  if (error) {
-    return (
-      <View style={styles.center}>
-        <Text>Failed to load posts!</Text>
-      </View>
-    )
-  }
-
-  return (
-    <FlatList
-      style={styles.container}
-      keyExtractor={(post) => post.id}
-      data={posts}
-      renderItem={({ item: { id, title, body }, index }) => (
-        <View key={id} style={styles.post}>
-          <Text style={styles.title}>
-            {index}. {title}
-          </Text>
-          <Text style={styles.body}>{body}</Text>
-        </View>
-      )}
-    />
-  )
-}
-
+  return(
+<View >
+  <View>
+  <Text style={{fontSize:30}}>
+    Food plan
+  </Text>
+  </View>
+  <View>
+    <TouchableOpacity  style={styles.button} activeOpacity={0.5}
+            onPress={() => navigation.navigate('Edit')}>
+      <Text >If you want more food click it </Text>
+    </TouchableOpacity>
+  </View>
+</View>
+  );
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1ACDA5',
+    //backgroundColor:"skyblue",
+    alignItems:"center",
+    justifyContent:"center",
   },
   post: {
     borderBottomWidth: 1,
@@ -92,4 +58,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  button:{
+    width: "100%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "skyblue",
+  
+},
 })

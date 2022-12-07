@@ -10,10 +10,8 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-
 import {Picker} from '@react-native-picker/picker';
-
-const Register = ({navigation}) => {
+const Profile = () => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userHeight, setUserHeight] = useState('');
@@ -23,12 +21,14 @@ const Register = ({navigation}) => {
   const [Gender, setGender] = useState('');
   const [bmi, setBmi] = useState('');
   const [info, setInfo] = useState('');
+  const [selectedValue, setSelectedValue] = useState('');
+
 
   const [userPassword, setUserPassword] = useState('');
-  const [selectedValue, setSelectedValue] = useState('');
+
   const [errortext, setErrortext] = useState('');
 
-  const handleSubmitButton = props => {
+  const handleSubmitButton = () => {
     setErrortext('');
     if (!userName) {
       alert('Please fill Name');
@@ -89,7 +89,7 @@ const Register = ({navigation}) => {
         backgroundColor: 'skyblue',
         justifyContent: 'center',
       }}>
-      <Text style={styles.successTextStyle}>Rgister Here</Text>
+      <Text style={styles.successTextStyle}>Update profile</Text>
 
       <View style={{flex: 1, backgroundColor: 'white',borderRadius:40}}>
         <ScrollView
@@ -215,15 +215,15 @@ const Register = ({navigation}) => {
               style={styles.buttonStyle}
               activeOpacity={0.5}
               onPress={handleSubmitButton}>
-              <Text style={styles.buttonTextStyle}>REGISTER</Text>
+              <Text style={styles.buttonTextStyle}>Update Profile</Text>
             </TouchableOpacity>
           </KeyboardAvoidingView>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.buttonStyle1}
             activeOpacity={0.5}
             onPress={() => navigation.navigate('login')}>
             <Text>Login Now</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </ScrollView>
       </View>
       {/* <View>
@@ -233,7 +233,7 @@ const Register = ({navigation}) => {
     </View>
   );
 };
-export default Register;
+export default Profile;
 
 const styles = StyleSheet.create({
   SectionStyle: {
@@ -244,10 +244,21 @@ const styles = StyleSheet.create({
     marginLeft: 35,
     marginRight: 35,
     margin: 10,
-    borderWidth:1,
     borderRadius: 50,
-
     backgroundColor: 'white',
+  },
+  buttonStyle: {
+    backgroundColor: 'skyblue',
+    borderWidth: 0,
+    color: '#FFFFFF',
+    borderColor: '#7DE24E',
+    height: 40,
+    alignItems: 'center',
+    borderRadius: 30,
+    marginLeft: 35,
+    marginRight: 35,
+    marginTop: 20,
+    marginBottom: 20,
   },
   picker: {
     flexDirection: 'row',
@@ -264,28 +275,12 @@ const styles = StyleSheet.create({
 
     backgroundColor: 'white',
   },
-  buttonStyle: {
-    backgroundColor: 'skyblue',
-    borderWidth: 0,
-    color: '#FFFFFF',
-    borderColor: '#7DE24E',
-    height: 40,
-    alignItems: 'center',
-    borderRadius: 30,
-    marginLeft: 35,
-    marginRight: 35,
-    marginTop: 20,
-    marginBottom: 20,
-  },
   buttonStyle1: {
     alignItems: 'center',
     alignSelf: 'center',
     marginHorizontal: 15,
 
     fontSize: 16,
-    paddingLeft: 15,
-    paddingRight: 15,
-
     color: '#026139',
     fontSize: 15,
   },

@@ -2,38 +2,51 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../Screens/LoginScreen';
-import RegisterScreen from '../Screens/Register';
+import Register from '../Screens/Register';
 import SplashScreen from 'react-native-splash-screen'
 import Reset from '../Screens/Reset';
 import Home from '../Screens/Home';
-import Foodlist from '../Screens/Food';
+import Food from '../Screens/Food';
+//import DrawerScreen from '../drawerNavigation';
+import Edit from '../Screens/Edit';
 const Stack = createNativeStackNavigator();
 
 const NavigationComponent = () => {
 
   SplashScreen.hide();
-  // const [isload, setisload ] = useState(false);
-
-  // setTimeout(() => {
-  //   setisload(true)
-  // },5000 );
+  
 
   return (
-    <NavigationContainer>
       <Stack.Navigator>
        
+        {/* <Stack.Screen name='DrawerScreen' component={DrawerScreen} options ={ { headerShown : false }} /> */}
         <Stack.Screen name='login' component={Login} options ={ { headerShown : false }} />
-        <Stack.Screen name='signup' component={RegisterScreen} options ={ { headerShown : false }} />
+        <Stack.Screen name='signup' component={Register} options ={ { headerShown : false }} />
         <Stack.Screen name='reset' component={Reset} options ={ { headerShown : false }} />
         <Stack.Screen name='home' component={Home} options ={ { headerShown : false }} />
-        <Stack.Screen name='list' component={Foodlist} options ={ { headerShown : false }} />
+        <Stack.Screen name='list' component={Food} options ={ { headerShown : false }} />
+        {/* <Stack.Screen name='edit' component={Edit} options ={ { headerShown : false }} /> */}
 
+         
 
       </Stack.Navigator>
-    </NavigationContainer>
+      
   );
+  
 
-}
+};
+
+
+// const  DrawerScreen=()=> {
+  
+//   return (
+//       <Drawer.Navigator initialRouteName="Home">
+        
+//         <Drawer.Screen name="home" component={Home} />
+//         <Drawer.Screen name="update profile" component={Profile} />
+//       </Drawer.Navigator>
+//   );
+//   };
 
 
 

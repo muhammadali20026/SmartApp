@@ -32,11 +32,11 @@ const AuthState = createSlice({
     requestRegister: (state, action) => {
       return {
         ...state,
-        id: action.payload.id,
-        username: action.payload.name,
-        email: action.payload.email,
-        token: action.payload.token,
-        provider: 'email',
+        // id: action.payload.id,
+        // username: action.payload.name,
+        // email: action.payload.email,
+        // token: action.payload.token,
+        // provider: 'email',
         isLoggedIn: true,
       };
     },

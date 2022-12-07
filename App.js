@@ -8,10 +8,14 @@ import Reset from './Screens/Reset';
 import Appes from './Screens/Home';
 import Foodlist from './Screens/Food';
 import NavigationComponent from './navigation';
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
+import Drawer from './drawerNavigation';
 import { store } from './store/index';
+import DrawerScreen from './drawerNavigation';
+import Routes from './navigation/route';
 
 const App = () => {
+  
 
   SplashScreen.hide();
   // const [isload, setisload ] = useState(false);
@@ -22,7 +26,9 @@ const App = () => {
 
   return (
     <Provider store={store}>
-    <NavigationComponent />
+      <NavigationContainer>
+    <Routes />
+    </NavigationContainer>
     </Provider>
   );
 

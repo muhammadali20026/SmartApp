@@ -9,14 +9,28 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { useDispatch } from "react-redux";
 
  import smartdiet from '../Image/smartdiet.png';
+ import { requestRegister } from "../store/slice/AuthSlice";
  
 
 const Login=({navigation})=> {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
+  const dispatch = useDispatch()
+  
+  const handleSubmitButton = () => {
+    setErrortext('');
+    if (!email) {
+      alert('Please fill Name');
+      return;
+    }
+    if (!password) {
+      alert('Please fill Email');
+      return;
+    }
+  };
   return (
     <View style={styles.container}>
        <Image style={styles.backendbg} source={smartdiet} />
@@ -44,7 +58,12 @@ const Login=({navigation})=> {
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
  
-      <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('home')}>
+      <TouchableOpacity style={styles.loginBtn} 
+      onPress={(handleSubmitButton) => {
+        console.log('==>');
+        dispatch(requestRegister())
+      }}>
+
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity
