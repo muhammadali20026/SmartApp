@@ -8,6 +8,7 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { useDispatch } from "react-redux";
 
@@ -32,9 +33,11 @@ const Login=({navigation})=> {
     }
   };
   return (
+    <ScrollView>
     <View style={styles.container}>
+      <View>
        <Image style={styles.backendbg} source={smartdiet} />
-       
+       </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -72,6 +75,7 @@ const Login=({navigation})=> {
         <Text style={styles.forgot_button}>Create a new account</Text>
       </TouchableOpacity>
     </View>
+    </ScrollView>
   );
 }
 export default  Login;
@@ -92,8 +96,8 @@ const styles = StyleSheet.create({
     backgroundColor: "skyblue",
     borderRadius: 30,
     width: "70%",
-    height: 45,
-    marginBottom: 20,
+   
+    margin: 20,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     alignItems: "center",
@@ -109,20 +113,19 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   backendbg: {
-    width: '80%',
-    height: '100%',
-    position: 'absolute',
-    top: 5,
-    zIndex: -1,
+    width: 200,
+    height: 220,
+    alignSelf:"center",
+   
 },
  
   forgot_button: {
-    height: 20,
     marginBottom: 30,
   },
  
   loginBtn: {
-    width: "80%",
+    paddingLeft:100,
+    paddingRight:100,
     borderRadius: 25,
     height: 50,
     alignItems: "center",

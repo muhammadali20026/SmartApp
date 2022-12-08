@@ -16,13 +16,23 @@ export default function DrawerScreen() {
   
   return (
       <Drawer.Navigator  
-        initialRouteName="Home"> 
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Update profile" component={Profile} />
-        <Drawer.Screen name="Food plan" component={Food} />
-        <Drawer.Screen name="Rest Password" component={Reset} />
-        <Drawer.Screen name="Logout" component={Logout} />
-        <Drawer.Screen name="Edit" component={Edit} />
+        initialRouteName="Home" > 
+        {/* headerStyle: {{
+            backgroundColor: '#307ecc', //Set Header color
+          }}, */}
+        <Drawer.Screen name="Home" component={Home} options={{ headerStyle: {
+            backgroundColor: '#47a89a', //Set Header color
+          }} }/>
+        <Drawer.Screen name="Update profile" component={Profile}  options={{ headerStyle: {
+            backgroundColor: '#47a89a',}}}/> 
+        <Drawer.Screen name="Food plan" component={Food}   options={{ headerStyle: {
+            backgroundColor: '#47a89a',}}}/>
+        <Drawer.Screen name="Rest Password" component={Reset}   options={{ headerStyle: {
+            backgroundColor: '#47a89a',}}}/>
+        <Drawer.Screen name="Logout" component={Logout}   options={{ headerStyle: {
+            backgroundColor: '#47a89a',}}}/>
+        <Drawer.Screen name="Edit" component={Edit}  options={{ headerStyle: {
+            backgroundColor: '#47a89a',}}}/>
 
 
       </Drawer.Navigator>

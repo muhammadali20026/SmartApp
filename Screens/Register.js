@@ -13,6 +13,7 @@ import {
 
 import {Picker} from '@react-native-picker/picker';
 
+
 const Register = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -64,6 +65,7 @@ const Register = ({navigation}) => {
       alert('Please fill  your phone Number ');
       return;
     }
+    
 
     //const handleBmi = props => {
     let val = (
@@ -83,8 +85,7 @@ const Register = ({navigation}) => {
   };
 
   return (
-    <View
-      style={{
+    <View style={{
         flex: 1,
         backgroundColor: 'skyblue',
         justifyContent: 'center',
@@ -158,28 +159,17 @@ const Register = ({navigation}) => {
                 returnKeyType="next"
               />
             </View>
-            {/* <View style={styles.SectionStyle}>
-              <TextInput
-                style={styles.inputStyle}
-                onChangeText={Gender =>
-                  setGender(Gender)
-                }
-                underlineColorAndroid="#f000"
-                placeholder="Gender"
-                
-                placeholderTextColor="#8b9cb5"
-                autoCapitalize="sentences"
-                returnKeyType="next"
-              />
-            </View> */}
+           
 
-            <View style={styles.picker}>
+            <View style={styles.SectionStyle}>
               <Picker
+             
                 selectedValue={selectedValue}
                 style={{height: 50, width: 150}}
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedValue(itemValue)
                 }>
+                  <Text  >jhgbvgc </Text>
                 <Picker.Item label="Male" value="Male" />
                 <Picker.Item label="Female" value="Female" />
               </Picker>
@@ -240,29 +230,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 40,
     fontSize: 20,
-    marginTop: 20,
-    marginLeft: 35,
-    marginRight: 35,
-    margin: 10,
     borderWidth:1,
-    borderRadius: 50,
-
+    borderRadius:10,
     backgroundColor: 'white',
+    alignItems: "center",
+    justifyContent:"space-around",
+  margin:15,
+    
   },
   picker: {
-    flexDirection: 'row',
-
-    height: 40,
-
-    fontSize: 20,
-    marginTop: 20,
-    marginLeft: 35,
-    marginRight: 35,
-    margin: 10,
+    
+    flex: 1,
+    color: 'black',
     borderWidth: 1,
-    borderRadius: 50,
-
-    backgroundColor: 'white',
+    borderRadius: 10,
+    borderColor: 'black',
+    
+    
   },
   buttonStyle: {
     backgroundColor: 'skyblue',
@@ -272,38 +256,29 @@ const styles = StyleSheet.create({
     height: 40,
     alignItems: 'center',
     borderRadius: 30,
-    marginLeft: 35,
-    marginRight: 35,
-    marginTop: 20,
-    marginBottom: 20,
+   
   },
   buttonStyle1: {
     alignItems: 'center',
     alignSelf: 'center',
     marginHorizontal: 15,
-
     fontSize: 16,
-    paddingLeft: 15,
-    paddingRight: 15,
-
     color: '#026139',
     fontSize: 15,
   },
   buttonTextStyle: {
     color: '#FFFFFF',
     paddingVertical: 10,
-
     color: '#026139',
     fontSize: 15,
   },
   inputStyle: {
     flex: 1,
     color: 'black',
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderWidth: 1,
-    borderRadius: 30,
+    
     borderColor: 'black',
+    underlineColorAndroid:"transparent",
+    
   },
   errorTextStyle: {
     color: 'red',
@@ -314,6 +289,7 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 18,
-    padding: 30,
+    margin:30,
+    
   },
 });
