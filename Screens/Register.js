@@ -110,6 +110,7 @@ const Register = ({navigation}) => {
                 placeholder="Enter Name"
                 placeholderTextColor="#8b9cb5"
                 autoCapitalize="sentences"
+                
               />
             </View>
             <View style={styles.SectionStyle}>
