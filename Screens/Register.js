@@ -110,7 +110,7 @@ const Register = ({navigation}) => {
                 placeholder="Enter Name"
                 placeholderTextColor="#8b9cb5"
                 autoCapitalize="sentences"
-                 autoCapitalize="sentences"
+                
                 
               />
             </View>
