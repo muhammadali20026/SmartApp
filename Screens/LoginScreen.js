@@ -10,10 +10,13 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { useDispatch } from "react-redux";
 
+import { useDispatch } from "react-redux";
+import background from '../Image/background.png';
  import smartdiet from '../Image/smartdiet.png';
  import { requestRegister } from "../store/slice/AuthSlice";
+ import AntDesign from 'react-native-vector-icons/AntDesign';
+ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
  
 
 const Login=({navigation})=> {
@@ -33,26 +36,32 @@ const Login=({navigation})=> {
     }
   };
   return (
-    <ScrollView>
-    <View style={styles.container}>
+      <View style={styles.container}>
+      <Image style={styles.back} source={background} />
+      
+    <View style={styles.container1}>
       <View>
        <Image style={styles.backendbg} source={smartdiet} />
        </View>
       <View style={styles.inputView}>
+      < MaterialCommunityIcons name="email-edit" size={24}/>
         <TextInput
           style={styles.TextInput}
           placeholder="Email."
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="white"
+          underlineColorAndroid={"white"}
           onChangeText={(email) => setEmail(email)}
         />
       </View>
  
       <View style={styles.inputView}>
+        <AntDesign name="lock" size={24}/>
         <TextInput
           style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
+           placeholder="Password."
+           placeholderTextColor="white"
+           secureTextEntry={true}
+           underlineColorAndroid={"white"}
           onChangeText={(password) => setPassword(password)}
         />
       </View>
@@ -67,7 +76,7 @@ const Login=({navigation})=> {
         dispatch(requestRegister())
       }}>
 
-        <Text style={styles.loginText}>LOGIN</Text>
+        <Text style={{color:"black"}}>LOGIN</Text>
       </TouchableOpacity>
       <TouchableOpacity
        
@@ -75,13 +84,13 @@ const Login=({navigation})=> {
         <Text style={styles.forgot_button}>Create a new account</Text>
       </TouchableOpacity>
     </View>
-    </ScrollView>
+    </View>
+  
   );
 }
 export default  Login;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
@@ -93,17 +102,23 @@ const styles = StyleSheet.create({
   },
  
   inputView: {
-    backgroundColor: "skyblue",
+   // backgroundColor: "skyblue",
+   
     borderRadius: 30,
     width: "70%",
-   
+   flexDirection:"row",
     margin: 20,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     alignItems: "center",
+    
   },
   container1:{
-
+    display: 'flex' ,
+    alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      height: '100%',
   },
  
   TextInput: {
@@ -111,16 +126,20 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     marginLeft: 20,
+    
+    
   },
   backendbg: {
-    width: 200,
-    height: 220,
+    width: 400,
+    height: 310,
     alignSelf:"center",
    
 },
  
   forgot_button: {
     marginBottom: 30,
+    fontWeight:"bold",
+    color:"white",
   },
  
   loginBtn: {
@@ -130,7 +149,15 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
-    backgroundColor: "skyblue",
+    marginTop: 10,
+    backgroundColor: "white",
+   
   },
+  back:{
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 10,
+    zIndex: -1,
+  }
 });

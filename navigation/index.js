@@ -20,9 +20,8 @@ const NavigationComponent = () => {
       <Stack.Navigator>
        
         {/* <Stack.Screen name='DrawerScreen' component={DrawerScreen} options ={ { headerShown : false }} /> */}
-        <Stack.Screen name='login' component={Login} options ={ { headerStyle: {
-            backgroundColor: '#57777a', //Set Header color
-          headerShown : false }} }/>
+        <Stack.Screen name='login' component={Login} options ={ { 
+          headerShown : false }} />
         <Stack.Screen name='signup' component={Register} options ={ { headerShown : false }} />
         <Stack.Screen name='reset' component={Reset} options ={ { headerShown : false }} />
         <Stack.Screen name='home' component={Home} options ={ { headerShown : false }} />

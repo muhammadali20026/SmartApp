@@ -30,7 +30,8 @@ const Home = () => {
   }
   return (
     <View style={styles.container}>
-      <View>
+      <Text>hfdgfhmgn b</Text>
+      {/* <View>
         <Text style={styles.title}>BMI Calculator</Text>
       </View>
 
@@ -60,7 +61,7 @@ const Home = () => {
        <Text>Calculate</Text> 
       </TouchableOpacity>
       <Text>{bmi}</Text>
-      <Text>{info}</Text>
+      <Text>{info}</Text> */}
           </View>
   );
 };

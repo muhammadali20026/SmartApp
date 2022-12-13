@@ -27,7 +27,7 @@ export default function DrawerScreen() {
             backgroundColor: '#47a89a',}}}/> 
         <Drawer.Screen name="Food plan" component={Food}   options={{ headerStyle: {
             backgroundColor: '#47a89a',}}}/>
-        <Drawer.Screen name="Rest Password" component={Reset}   options={{ headerStyle: {
+        <Drawer.Screen name="Reset Password" component={Reset}   options={{ headerStyle: {
             backgroundColor: '#47a89a',}}}/>
         <Drawer.Screen name="Logout" component={Logout}   options={{ headerStyle: {
             backgroundColor: '#47a89a',}}}/>
