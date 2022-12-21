@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './Screens/LoginScreen';
 import RegisterScreen from './Screens/Register';
-import SplashScreen from 'react-native-splash-screen'
 import Reset from './Screens/Reset';
 import Appes from './Screens/Home';
 import Foodlist from './Screens/Food';
@@ -17,7 +16,6 @@ import Routes from './navigation/route';
 const App = () => {
   
 
-  SplashScreen.hide();
   // const [isload, setisload ] = useState(false);
 
   // setTimeout(() => {

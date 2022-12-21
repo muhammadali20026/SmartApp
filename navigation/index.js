@@ -3,29 +3,33 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../Screens/LoginScreen';
 import Register from '../Screens/Register';
-import SplashScreen from 'react-native-splash-screen'
 import Reset from '../Screens/Reset';
 import Home from '../Screens/Home';
 import Food from '../Screens/Food';
 //import DrawerScreen from '../drawerNavigation';
 import Edit from '../Screens/Edit';
+import DietPlan from '../Screens/DietPlan';
+import Splash from '../Screens/Splash';
+
+
 const Stack = createNativeStackNavigator();
 
 const NavigationComponent = () => {
 
-  SplashScreen.hide();
   
 
   return (
-      <Stack.Navigator>
+      <Stack.Navigator >
        
         {/* <Stack.Screen name='DrawerScreen' component={DrawerScreen} options ={ { headerShown : false }} /> */}
-        <Stack.Screen name='login' component={Login} options ={ { 
-          headerShown : false }} />
+        <Stack.Screen name='splash' component={Splash} options ={ { headerShown : false }} />
+        <Stack.Screen name='login' component={Login} options ={ { headerShown : false }} />
         <Stack.Screen name='signup' component={Register} options ={ { headerShown : false }} />
         <Stack.Screen name='reset' component={Reset} options ={ { headerShown : false }} />
         <Stack.Screen name='home' component={Home} options ={ { headerShown : false }} />
         <Stack.Screen name='list' component={Food} options ={ { headerShown : false }} />
+        {/* <Stack.Screen name='show_plans' component={DietPlan} options ={ { headerShown : false }} /> */}
+
         {/* <Stack.Screen name='edit' component={Edit} options ={ { headerShown : false }} /> */}
 
          

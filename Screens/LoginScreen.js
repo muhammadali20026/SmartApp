@@ -1,4 +1,5 @@
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -35,6 +36,38 @@ const Login=({navigation})=> {
       return;
     }
   };
+  // Api Integration
+  const handleLogin = () => {
+    var myHeaders = new Headers();
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+  "email": email,
+  "password": password
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+    fetch('http://10.0.2.2:8000/common/api/login',requestOptions)
+    .then((res) => {
+      return res.json()
+      
+    }).then(async(json) => {
+      await AsyncStorage.setItem('user',JSON.stringify(json.user))
+      navigation.replace('home');
+
+    }).catch((error) => {
+      console.log('erorrorororo',error)
+    })
+  }
+
+    
   return (
       <View style={styles.container}>
       <Image style={styles.back} source={background} />
