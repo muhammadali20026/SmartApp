@@ -11,7 +11,7 @@ import {
   ScrollView,
 } from 'react-native';
 import background from '../Image/background.png';
-import  DropDownPicker  from 'react-native-dropdown-picker';
+
 import {Picker} from '@react-native-picker/picker';
 
 const Register = ({navigation}) => {
@@ -158,19 +158,21 @@ const Register = ({navigation}) => {
               />
             </View>
 
-            <View style={styles.SectionStyle}>
-              {/* <Picker
+            <View style={styles.picker1}>
+               <Picker
+               
                 selectedValue={selectedValue}
-                underlineColorAndroid={"white"}
-                style={{height: 50, width: 150 ,color:"red"}}
+                
+                style={{height: 50, width: 150 ,color:"white"}}
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedValue(itemValue)
                 }>
-                <Text>jhgbvgc </Text>
+                <Text></Text>
+                <Picker.Item label="Select Gender" value="" />
                 <Picker.Item label="Male" value="Male" />
                 <Picker.Item label="Female" value="Female" />
-              </Picker> */}
-              <DropDownPicker 
+              </Picker> 
+              {/* <DropDownPicker 
                 open={open}
                 //underlineColorAndroid={'white'}
                 value={value}
@@ -179,7 +181,7 @@ const Register = ({navigation}) => {
                 setOpen={setOpen}
                 setValue={setValue}
                 setItems={setItems}
-              />
+              /> */}
             </View>
             <View style={styles.SectionStyle}>
               <TextInput
@@ -254,6 +256,17 @@ const styles = StyleSheet.create({
     // backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'space-around',
+    margin: 15,
+  },
+  picker1:{
+    flexDirection: 'row',
+    height: 40,
+    fontSize: 20,
+    borderWidth:2,
+    borderTopColor:"transparent",
+    borderEndColor:"transparent",
+    borderStartColor:"transparent",
+    borderColor:"white",
     margin: 15,
   },
   container: {

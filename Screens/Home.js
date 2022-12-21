@@ -1,6 +1,7 @@
 import React from "react";
 import  { useState } from "react";
 import { Card } from "react-native-paper";
+import background from '../Image/background.png'
 import {
   
   View,
@@ -12,12 +13,22 @@ const Home = () => {
 <Card>
     <Card >
       
-    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+    <Card.Cover source={background} />
   </Card>
-  <Card style={{flexDirection:"column"}}>
-  <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+  <Card style={styles.label}>
+  <Card.Title
+    title="Diet plan"
+    onPress={() => navigation.navigate('login')}
+/>
+</Card>
+<Card>
+  <Card.Title
+    title="Diet plan"
+    onPress={() => navigation.navigate('login')}
+/>
+</Card>
   </Card>
-  </Card>
+  
 
 
 
@@ -78,7 +89,7 @@ const styles = StyleSheet.create({
     color: "blue"
   },
   label: {
-    marginLeft: 15,
+    
     marginTop: 20,
     fontSize: 20
   }
