@@ -28,10 +28,6 @@ const Home = () => {
 />
 </Card>
   </Card>
-  
-
-
-
   );
 };
 
