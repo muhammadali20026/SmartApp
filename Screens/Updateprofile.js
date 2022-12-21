@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import background from '../Image/background.png';
+import DropDownPicker from 'react-native-dropdown-picker';
 import {Picker} from '@react-native-picker/picker';
 const Profile = () => {
   const [userName, setUserName] = useState('');
@@ -27,7 +29,12 @@ const Profile = () => {
   const [userPassword, setUserPassword] = useState('');
 
   const [errortext, setErrortext] = useState('');
-
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {label: 'Apple', value: 'apple'},
+    {label: 'Banana', value: 'banana'},
+  ]);
   const handleSubmitButton = () => {
     setErrortext('');
     if (!userName) {
@@ -83,21 +90,13 @@ const Profile = () => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: 'skyblue',
-        justifyContent: 'center',
-      }}>
-      <Text style={styles.successTextStyle}>Update profile</Text>
+    <View style={styles.container}>
+      <Text style={styles.successTextStyle}> Update Profile</Text>
 
-      <View style={{flex: 1, backgroundColor: 'white',borderRadius:40}}>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}>
+      <View style={styles.container}>
+        <ScrollView>
+          <Image style={styles.back} source={background} />
+
           <View style={{alignItems: 'center'}}></View>
 
           <KeyboardAvoidingView enabled>
@@ -105,20 +104,21 @@ const Profile = () => {
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={UserName => setUserName(UserName)}
-                underlineColorAndroid="#f000"
+                underlineColorAndroid={'white'}
                 placeholder="Enter Name"
-                placeholderTextColor="#8b9cb5"
+                placeholderTextColor="white"
                 autoCapitalize="sentences"
+                keyboardType="name"
               />
             </View>
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={UserAge => setUserAge(UserAge)}
-                underlineColorAndroid="#f000"
+                underlineColorAndroid={'white'}
                 placeholder="Enter Age"
                 textContentType="Number"
-                placeholderTextColor="#8b9cb5"
+                placeholderTextColor="white"
                 keyboardType="numeric"
                 blurOnSubmit={false}
               />
@@ -127,70 +127,78 @@ const Profile = () => {
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={UserHeight => setUserHeight(UserHeight)}
-                underlineColorAndroid="#f000"
+                underlineColorAndroid={'white'}
                 placeholder="Enter height"
                 textContentType="Number"
                 keyboardType="numeric"
-                placeholderTextColor="#8b9cb5"
+                placeholderTextColor="white"
               />
             </View>
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={userWeight => setUserWeight(userWeight)}
-                underlineColorAndroid="#f000"
+                underlineColorAndroid={'white'}
                 placeholder="Enter weight"
                 textContentType="Number"
                 keyboardType="numeric"
-                placeholderTextColor="#8b9cb5"
+                placeholderTextColor="white"
               />
             </View>
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={ContactNumber => setContactNumber(ContactNumber)}
-                underlineColorAndroid="#f000"
+                underlineColorAndroid={'white'}
                 placeholder="Enter Phone number"
-                placeholderTextColor="#8b9cb5"
+                placeholderTextColor="white"
                 autoCapitalize="sentences"
                 textContentType="Number"
                 keyboardType="numeric"
                 returnKeyType="next"
               />
             </View>
-            {/* <View style={styles.SectionStyle}>
-              <TextInput
-                style={styles.inputStyle}
-                onChangeText={Gender =>
-                  setGender(Gender)
-                }
-                underlineColorAndroid="#f000"
-                placeholder="Gender"
-                
-                placeholderTextColor="#8b9cb5"
-                autoCapitalize="sentences"
-                returnKeyType="next"
-              />
-            </View> */}
 
-            <View style={styles.picker}>
-              <Picker
+            <View style={styles.SectionStyle}>
+              {/* <Picker
                 selectedValue={selectedValue}
-                style={{height: 50, width: 150}}
+                underlineColorAndroid={"white"}
+                style={{height: 50, width: 150 ,color:"red"}}
                 onValueChange={(itemValue, itemIndex) =>
                   setSelectedValue(itemValue)
                 }>
+                <Text>jhgbvgc </Text>
                 <Picker.Item label="Male" value="Male" />
                 <Picker.Item label="Female" value="Female" />
-              </Picker>
+              </Picker> 
+              <DropDownPicker 
+                open={open}
+                //underlineColorAndroid={'white'}
+                value={value}
+                placeholder="Select Gender"
+                items={items}
+                setOpen={setOpen}
+                setValue={setValue}
+                setItems={setItems}
+              />*/}
+               <TextInput
+                style={styles.inputStyle}
+                onChangeText={UserPassword => setUserPassword(UserPassword)}
+                placeholder="Select Gender"
+                placeholderTextColor="white"
+                returnKeyType="next"
+                secureTextEntry={true}
+                underlineColorAndroid={'white'}
+                blurOnSubmit={false}
+              />
             </View>
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={UserEmail => setUserEmail(UserEmail)}
-                underlineColorAndroid="#f000"
+                underlineColorAndroid={'white'}
                 placeholder="Enter Email"
-                placeholderTextColor="#8b9cb5"
+                placeholderTextColor="white"
                 keyboardType="email-address"
                 blurOnSubmit={false}
               />
@@ -199,11 +207,11 @@ const Profile = () => {
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={UserPassword => setUserPassword(UserPassword)}
-                underlineColorAndroid="#f000"
                 placeholder="Enter Password"
-                placeholderTextColor="#8b9cb5"
+                placeholderTextColor="white"
                 returnKeyType="next"
                 secureTextEntry={true}
+                underlineColorAndroid={'white'}
                 blurOnSubmit={false}
               />
             </View>
@@ -215,15 +223,15 @@ const Profile = () => {
               style={styles.buttonStyle}
               activeOpacity={0.5}
               onPress={handleSubmitButton}>
-              <Text style={styles.buttonTextStyle}>Update Profile</Text>
+              <Text style={styles.buttonTextStyle}>REGISTER</Text>
             </TouchableOpacity>
           </KeyboardAvoidingView>
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={styles.buttonStyle1}
             activeOpacity={0.5}
             onPress={() => navigation.navigate('login')}>
-            <Text>Login Now</Text>
-          </TouchableOpacity> */}
+            <Text style={{color: 'white', marginTop: 18}}>Login Now</Text>
+          </TouchableOpacity>
         </ScrollView>
       </View>
       {/* <View>
@@ -237,68 +245,69 @@ export default Profile;
 
 const styles = StyleSheet.create({
   SectionStyle: {
+    // inputView: {
+    //   // backgroundColor: "skyblue",
+
+    //    borderRadius: 30,
+    //    width: "70%",
+    //   flexDirection:"row",
+    //    margin: 20,
+    //    borderTopLeftRadius: 30,
+    //    borderTopRightRadius: 30,
+    //    alignItems: "center",
+
+    //  },
     flexDirection: 'row',
     height: 40,
     fontSize: 20,
-    marginTop: 20,
-    marginLeft: 35,
-    marginRight: 35,
-    margin: 10,
-    borderRadius: 50,
-    backgroundColor: 'white',
+    //borderWidth:1,
+    borderRadius: 10,
+    // backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    margin: 15,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: 'green',
+    justifyContent: 'center',
+  },
+  picker: {
+    flex: 1,
+    color: 'black',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: 'black',
   },
   buttonStyle: {
-    backgroundColor: 'skyblue',
+    backgroundColor: 'white',
     borderWidth: 0,
     color: '#FFFFFF',
     borderColor: '#7DE24E',
     height: 40,
     alignItems: 'center',
     borderRadius: 30,
-    marginLeft: 35,
-    marginRight: 35,
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  picker: {
-    flexDirection: 'row',
-
-    height: 40,
-
-    fontSize: 20,
-    marginTop: 20,
-    marginLeft: 35,
-    marginRight: 35,
-    margin: 10,
-    borderWidth: 1,
-    borderRadius: 50,
-
-    backgroundColor: 'white',
   },
   buttonStyle1: {
     alignItems: 'center',
     alignSelf: 'center',
     marginHorizontal: 15,
-
     fontSize: 16,
-    color: '#026139',
+    // color: '#026139',
     fontSize: 15,
   },
   buttonTextStyle: {
-    color: '#FFFFFF',
+    // color: '#FFFFFF',
     paddingVertical: 10,
-
     color: '#026139',
     fontSize: 15,
   },
   inputStyle: {
     flex: 1,
     color: 'black',
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderWidth: 1,
-    borderRadius: 30,
+
     borderColor: 'black',
+    underlineColorAndroid: 'transparent',
   },
   errorTextStyle: {
     color: 'red',
@@ -309,6 +318,13 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 18,
-    padding: 30,
+    margin: 30,
+  },
+  back: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 10,
+    zIndex: -1,
   },
 });

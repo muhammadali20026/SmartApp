@@ -1,68 +1,26 @@
 import React from "react";
 import  { useState } from "react";
+import { Card } from "react-native-paper";
 import {
-  Text,
-  TextInput,
-  TouchableOpacity,
+  
   View,
+  Text,
   StyleSheet
 } from "react-native";
 const Home = () => {
-  const [bmi, setBmi] = useState("");
-  const [info, setInfo] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
-  const handleBmi = () => {
-    let val = (
-      [Number(weight) / Number(height) / Number(height)] * 10000
-    ).toFixed(1);
-    console.log(typeof val);
-    setBmi(val.toString());
-    if (val < 18.5) {
-      setInfo("Under Weight");
-    } else if (val > 18.5 && val <= 24.9) {
-      setInfo("Healthy");
-    } else if (val > 24.9 && val < 30) {
-      setInfo("Overweight");
-    } else {
-      setInfo("Obese");
-    }
-  }
-  return (
-    <View style={styles.container}>
-      <Text>hfdgfhmgn b</Text>
-      {/* <View>
-        <Text style={styles.title}>BMI Calculator</Text>
-      </View>
+  return(
+<Card>
+    <Card >
+      
+    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+  </Card>
+  <Card style={{flexDirection:"column"}}>
+  <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+  </Card>
+  </Card>
 
-      <View>
-        <Text style={styles.label}>Height</Text>
-      </View>
-      <View>
-        <TextInput
-          style={styles.input}
-          value="text"
-          onChange={(e) => setHeight(value)}
-          placeholder="height in cm"
-        />
-      </View>
-      <View>
-        <Text style={styles.label}>Weight</Text>
-      </View>
-      <View>
-        <TextInput
-          style={styles.input}
-          value="text"
-          onChange={(e) => setWeight(value)}
-          placeholder="Weight in kg"
-        />
-      </View>
-      <TouchableOpacity style={styles.submitButton} onClick={handleBmi}>
-       <Text>Calculate</Text> 
-      </TouchableOpacity>
-      <Text>{bmi}</Text>
-      <Text>{info}</Text> */}
-          </View>
+
+
   );
 };
 
