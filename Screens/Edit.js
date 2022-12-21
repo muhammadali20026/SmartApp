@@ -10,7 +10,7 @@ const UselessTextInput = () => {
     
       'Allert',
     
-      'The Nutritionist send updated food plan ',
+      'The Dietitian send updated food plan in  three hour ',
       [
         {
           text: 'ok',
