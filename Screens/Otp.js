@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, TouchableOpacity, ActivityIndicator, Text } from 'react-native';
 
@@ -6,6 +6,7 @@ const OTPScreen = () => {
     const [otp, setOTP] = useState(['', '', '', '']);
     const [indicator,setIndicator] = useState(false)
     const email=useRoute().params?.email;
+    const navigation= useNavigation();
 
     const handleChange = (text, index) => {
         const newOTP = [...otp];
@@ -28,8 +29,11 @@ const OTPScreen = () => {
         })
             .then(res => res.json())
             .then(async success => {
-                console.log('successss',success)
-                  
+              // ToastAndroid.show(success.message, ToastAndroid.SHORT);
+              if(success.status == 200){
+                navigation.navigate('newpassword',{email:email})
+              }
+              console.log('Success', success.message);
             })
             .catch(error => {
                 console.log('error while Forget Password', error);

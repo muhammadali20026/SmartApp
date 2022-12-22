@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import NavigationComponent from './index';
-import { Provider, useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 
 import DrawerScreen from '../drawerNavigation/index';
 

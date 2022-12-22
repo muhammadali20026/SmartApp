@@ -6,7 +6,7 @@ import background from '../Image/background.png'
 import { useNavigation } from "@react-navigation/native";
 const Reset = () => {
   const navigation=useNavigation()
-  const [email, setEmail] = useState('aliashraf20026@gmail.com');
+  const [email, setEmail] = useState('');
   const [indicator, setIndicator] = useState(false);
 
   const handleReset = () => {

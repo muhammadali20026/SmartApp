@@ -6,11 +6,15 @@ import Register from '../Screens/Register';
 import Reset from '../Screens/Reset';
 import Home from '../Screens/Home';
 import Food from '../Screens/Food';
+import Theme from '../Screens/theme';
+import OTP from '../Screens/Otp';
 //import DrawerScreen from '../drawerNavigation';
 import Edit from '../Screens/Edit';
 import DietPlan from '../Screens/DietPlan';
 import Splash from '../Screens/Splash';
 import Otp from '../Screens/Otp';
+import newpassword from '../Screens/newpassword';
+import OTPScreen from '../Screens/Otp';
 
 
 const Stack = createNativeStackNavigator();
@@ -29,8 +33,10 @@ const NavigationComponent = () => {
         <Stack.Screen name='reset' component={Reset} options ={ { headerShown : false }} />
         <Stack.Screen name='home' component={Home} options ={ { headerShown : false }} />
         <Stack.Screen name='list' component={Food} options ={ { headerShown : false }} />
+        <Stack.Screen name='OTPScreen' component={OTPScreen} options ={ { headerShown : false }} />
         {/* <Stack.Screen name='show_plans' component={DietPlan} options ={ { headerShown : false }} /> */}
         <Stack.Screen name='Otp' component={Otp} options ={ { headerShown : false }} />
+        <Stack.Screen name='newpassword' component={newpassword} options ={ { headerShown : false }} />
         {/* <Stack.Screen name='edit' component={Edit} options ={ { headerShown : false }} /> */}
 
          
