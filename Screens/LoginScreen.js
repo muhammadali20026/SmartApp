@@ -104,7 +104,7 @@ var requestOptions = {
       </TouchableOpacity>
  
       <TouchableOpacity style={styles.loginBtn} 
-      onPress={(handleSubmitButton) => {
+      onPress={(handleLogin) => {
         console.log('==>');
         dispatch(requestRegister())
       }}>
