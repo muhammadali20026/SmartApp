@@ -6,7 +6,8 @@ import {
   
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from "react-native";
 const Home = () => {
   return(
@@ -15,18 +16,22 @@ const Home = () => {
       
     <Card.Cover source={background} />
   </Card>
+  <TouchableOpacity>
   <Card style={styles.label}>
   <Card.Title
     title="Diet plan"
     onPress={() => navigation.navigate('login')}
 />
 </Card>
+</TouchableOpacity>
+<TouchableOpacity>
 <Card>
   <Card.Title
     title="Diet plan"
     onPress={() => navigation.navigate('login')}
 />
 </Card>
+</TouchableOpacity>
   </Card>
   );
 };

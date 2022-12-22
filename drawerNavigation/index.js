@@ -10,6 +10,7 @@ import Food from '../Screens/Food';
 import Logout from '../Screens/Logout';
 import Edit from '../Screens/Edit';
 import DrawerContent from './drawerContent';
+import Theme from '../Screens/theme';
 const Drawer = createDrawerNavigator();
 
 export default function DrawerScreen() {
@@ -32,6 +33,8 @@ export default function DrawerScreen() {
         <Drawer.Screen name="Logout" component={Logout}   options={{ headerStyle: {
             backgroundColor: '#47a89a',}}}/>
         <Drawer.Screen name="Edit" component={Edit}  options={{ headerStyle: {
+            backgroundColor: '#47a89a',}}}/>
+             <Drawer.Screen name="theme" component={Theme}  options={{ headerStyle: {
             backgroundColor: '#47a89a',}}}/>
 
 

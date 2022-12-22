@@ -7,38 +7,33 @@ import {
   StatusBar,
   Image,
 } from 'react-native';
-
 import React, {useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import background from '../Image/background.png';
-const Reset = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [code, setOtp] = useState('');
+const Password = () => {
+  const [password, setPassword] = useState('');
+
   return (
     <View style={styles.container}>
       <Image style={styles.back} source={background} />
       <View style={styles.container1}>
         <View style={styles.text}>
-          <Text style={{color: 'white'}}>
-            {'Please enter your email to reset your password:'}
-          </Text>
+          <Text style={{color: 'white'}}></Text>
           <View>
-            <MaterialCommunityIcons name="email-edit" size={24} />
             <TextInput
               style={styles.form}
-              value={email}
-              placeholder={'Your account email'}
+              value={password}
+              placeholder={'Enter a new password'}
               placeholderTextColor="white"
-              onChangeText={text => setEmail(text)}
+              onChangeText={text => setPassword(text)}
               autoCapitalize={'none'}
               underlineColorAndroid={'white'}
-              keyboardType={'email-address'}
+              keyboardType={'number'}
             />
-           
           </View>
           <View style={styles.form1}>
-            <TouchableOpacity onPress={() => navigation.navigate('otp')}>
-              <Text>{'Request password reset'}</Text>
+            <TouchableOpacity onPress={() => {}}>
+              <Text>Save</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -46,7 +41,7 @@ const Reset = ({navigation}) => {
     </View>
   );
 };
-export default Reset;
+export default Password;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

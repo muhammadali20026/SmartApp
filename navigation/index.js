@@ -7,6 +7,8 @@ import SplashScreen from 'react-native-splash-screen'
 import Reset from '../Screens/Reset';
 import Home from '../Screens/Home';
 import Food from '../Screens/Food';
+import Theme from '../Screens/theme';
+import OTP from '../Screens/Otp';
 //import DrawerScreen from '../drawerNavigation';
 import Edit from '../Screens/Edit';
 const Stack = createNativeStackNavigator();
@@ -19,13 +21,17 @@ const NavigationComponent = () => {
   return (
       <Stack.Navigator>
        
-        {/* <Stack.Screen name='DrawerScreen' component={DrawerScreen} options ={ { headerShown : false }} /> */}
+       
+       
         <Stack.Screen name='login' component={Login} options ={ { 
           headerShown : false }} />
         <Stack.Screen name='signup' component={Register} options ={ { headerShown : false }} />
         <Stack.Screen name='reset' component={Reset} options ={ { headerShown : false }} />
+        <Stack.Screen name='otp' component={OTP} options ={ { headerShown : false }} />
+
         <Stack.Screen name='home' component={Home} options ={ { headerShown : false }} />
         <Stack.Screen name='list' component={Food} options ={ { headerShown : false }} />
+        
         {/* <Stack.Screen name='edit' component={Edit} options ={ { headerShown : false }} /> */}
 
          
